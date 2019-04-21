@@ -14,21 +14,46 @@ namespace PassThePigs
 
         public enum RollOutcomes
         {
-            Sider,
+            NoDot,
+            Dot,
             Razorback,
             Trotter,
             Snouter,
             LeaningJowler                     
         }
-
+        /// <summary>
+        /// Calculates the roll, based on probability. 
+        /// Shout-out to Dayne Batten for the probabilities - 
+        ///     see http://daynebatten.com/2015/09/optimal-pass-the-pigs-strategy/
+        /// </summary>
+        /// <returns></returns>
         public RollOutcomes rollOnce()
         {
-            if (random.NextDouble() < 0.5)
+            double result;
+            if ((result = random.NextDouble()) < 0.35)
             {
-                return RollOutcomes.Sider;
+                return RollOutcomes.NoDot;
             }
-            return RollOutcomes.Razorback;
+            else if (result < .65)
+            {
+                return RollOutcomes.Dot;
+            }
+            else if (result < .85)
+            {
+                return RollOutcomes.Razorback;
+            }
+            else if (result < .95)
+            {
+                return RollOutcomes.Trotter;
+            }
+            else if (result < .99)
+            {
+                return RollOutcomes.Snouter;
+            }
+            else
+            {
+                return RollOutcomes.LeaningJowler;
+            }
         }
-
     }
 }

@@ -63,7 +63,7 @@ namespace PassThePigs
          * 0-Black, 1-White, 2-Pink, 3-Brown, 4-Yellow, 5-Blue, 6-Purple, 7-Green
          * Return true if successful color change
          */
-        public boolean ChangeColor(int color) {
+        public bool changeColor(int color) {
             if (color >= 0 && color <= 7) {
                 this.color = color;
                 return true;
@@ -76,19 +76,19 @@ namespace PassThePigs
          * 0-Black, 1-White, 2-Pink, 3-Brown, 4-Yellow, 5-Blue, 6-Purple, 7-Green
          */
         public String getColor() {
-            if (color = 0)
+            if (color == 0)
                 return "Black";
-            else if (color = 1)
+            else if (color == 1)
                 return "White";
-            else if (color = 2)
+            else if (color == 2)
                 return "Pink";
-            else if (color = 3)
+            else if (color == 3)
                 return "Brown";
-            else if (color = 4)
+            else if (color == 4)
                 return "Yellow";
-            else if (color = 5)
+            else if (color == 5)
                 return "Blue";
-            else if (color = 6)
+            else if (color == 6)
                 return "Purple";
             else
                 return "Green";

@@ -39,7 +39,10 @@ namespace PassThePigs
         {
             Display disp = new Display();
             Pig pig1 = new Pig();
+            pig1.changeColor();
             Pig pig2 = new Pig();
+            pig2.changeColor();
+            Console.WriteLine("Your current pigs are " + pig1.getColor() + " and " + pig2.getColor());
             if (players == null || players[0] == null)
             {
                 throw new Exception("Player array was null");

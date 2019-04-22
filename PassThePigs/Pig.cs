@@ -63,10 +63,26 @@ namespace PassThePigs
          * 0-Black, 1-White, 2-Pink, 3-Brown, 4-Yellow, 5-Blue, 6-Purple, 7-Green
          * Return true if successful color change
          */
-        public bool changeColor(int color) {
-            if (color >= 0 && color <= 7) {
-                this.color = color;
-                return true;
+        public bool changeColor() {
+            Console.WriteLine("Please select a pig color: (0-Black, 1-White, 2-Pink, 3-Brown, 4-Yellow, 5-Blue, 6-Purple, 7-Green)");
+            bool setColor = false;
+            // Input validation
+            while (!setColor)
+            {
+                try
+                {
+                    int color = Int32.Parse(Console.ReadLine());
+                    if (color >= 0 && color <= 7)
+                    {
+                        this.color = color;
+                        Console.WriteLine("You have set the pig's color to: " + this.getColor());
+                        return true;
+                    } else {
+                        throw new Exception();
+                    }
+                } catch (Exception e) {
+                    Console.WriteLine("That isn't a valid selection. Please try again.");
+                }
             }
             return false;
         }

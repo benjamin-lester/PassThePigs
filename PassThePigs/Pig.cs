@@ -4,14 +4,17 @@ using System.Text;
 
 namespace PassThePigs
 {
+    /// <summary>
+    /// Contains properties and functions about the beloved pigs.
+    /// </summary>
     public class Pig
     {
-        private int color;
         static Random random = new Random();
         public Pig()
         {
-            // Temporary default color
-            this.color = 0;
+            // Temporary default color = Black
+            this._color = 0;
+            
         }
 
         public enum RollOutcomes
@@ -28,8 +31,8 @@ namespace PassThePigs
         /// Shout-out to Dayne Batten for the probabilities - 
         ///     see http://daynebatten.com/2015/09/optimal-pass-the-pigs-strategy/
         /// </summary>
-        /// <returns></returns>
-        public RollOutcomes rollOnce()
+        /// <returns>A single enum value of RollOutcomes, based on chance (probability)</returns>
+        public RollOutcomes RollOnce()
         {
             double result;
             if ((result = random.NextDouble()) < 0.35)
@@ -58,56 +61,57 @@ namespace PassThePigs
             }
         }
 
-        /*
-         * Set pig color to int corresponding to color:
-         * 0-Black, 1-White, 2-Pink, 3-Brown, 4-Yellow, 5-Blue, 6-Purple, 7-Green
-         * Return true if successful color change
-         */
-        public bool changeColor() {
-            Console.WriteLine("Please select a pig color: (0-Black, 1-White, 2-Pink, 3-Brown, 4-Yellow, 5-Blue, 6-Purple, 7-Green)");
-            bool setColor = false;
-            // Input validation
-            while (!setColor)
+        /// <summary>
+        /// Set pig color to int corresponding to color:
+        ///    0-Black, 1-White, 2-Pink, 3-Brown, 4-Yellow, 5-Blue, 6-Purple, 7-Green
+        /// </summary>
+        /// <returns>True if successful color change</returns>
+        internal bool SetPigColor(int color)
+        {
+            if (color >= 0 && color <= 7)
             {
-                try
-                {
-                    int color = Int32.Parse(Console.ReadLine());
-                    if (color >= 0 && color <= 7)
-                    {
-                        this.color = color;
-                        Console.WriteLine("You have set the pig's color to: " + this.getColor());
-                        return true;
-                    } else {
-                        throw new Exception();
-                    }
-                } catch (Exception e) {
-                    Console.WriteLine("That isn't a valid selection. Please try again.");
-                }
+                this._color = color;
+                return true;
             }
             return false;
         }
 
-        /* 
-         * Fetch name of pig color
-         * 0-Black, 1-White, 2-Pink, 3-Brown, 4-Yellow, 5-Blue, 6-Purple, 7-Green
-         */
-        public String getColor() {
-            if (color == 0)
-                return "Black";
-            else if (color == 1)
-                return "White";
-            else if (color == 2)
-                return "Pink";
-            else if (color == 3)
-                return "Brown";
-            else if (color == 4)
-                return "Yellow";
-            else if (color == 5)
-                return "Blue";
-            else if (color == 6)
-                return "Purple";
-            else
+        private int _color;        
+        public String Color
+        {
+            get
+            {
+                if (_color == 0)
+                {
+                    return "Black";
+                }
+                else if (_color == 1)
+                {
+                    return "White";
+                }
+                else if (_color == 2)
+                {
+                    return "Pink";
+                }
+                else if (_color == 3)
+                {
+                    return "Brown";
+                }
+                else if (_color == 4)
+                {
+                    return "Yellow";
+                }
+                else if (_color == 5)
+                {
+                    return "Blue";
+                }
+                else if (_color == 6)
+                {
+                    return "Purple";
+                }
                 return "Green";
+            }
         }
+        
     }
 }

@@ -81,35 +81,25 @@ namespace PassThePigs
         {
             get
             {
-                if (_color == 0)
-                {
-                    return "Black";
+                switch (_color) {
+                    case 0:
+                        return "Black";
+                    case 1:
+                        return "White";
+                    case 2:
+                        return "Pink";
+                    case 3:
+                        return "Brown";
+                    case 4:
+                        return "Yellow";
+                    case 5:
+                        return "Blue";
+                    case 6:
+                        return "Purple";
+                    case 7:
+                        return "Green";
                 }
-                else if (_color == 1)
-                {
-                    return "White";
-                }
-                else if (_color == 2)
-                {
-                    return "Pink";
-                }
-                else if (_color == 3)
-                {
-                    return "Brown";
-                }
-                else if (_color == 4)
-                {
-                    return "Yellow";
-                }
-                else if (_color == 5)
-                {
-                    return "Blue";
-                }
-                else if (_color == 6)
-                {
-                    return "Purple";
-                }
-                return "Green";
+                return "Error. Pig has no color.";
             }
         }
         

@@ -76,7 +76,8 @@ namespace PassThePigs
             return false;
         }
 
-        private int _color;        
+        private int _color;
+
         public String Color
         {
             get
@@ -103,5 +104,16 @@ namespace PassThePigs
             }
         }
         
+        private String name;
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String Name {
+            get {
+                return name;
+            }
+        }
     }
 }
